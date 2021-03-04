@@ -9,9 +9,10 @@ import {
 } from 'react-instantsearch-dom';
 import PropTypes from 'prop-types';
 import './App.css';
+import UploadForm from "./components/UploadForm";
+import Nav_bar from "./components/Nav_bar";
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
-
 
 // const searchClient = algoliasearch('B1G2GM9NG0', 'aadef574be1f9252bb48d4ea09b5cfe5');
 const searchClient = algoliasearch('ABETVSGKO0', 'f0dc115e155e7ca2d8b94912b9985db3');
@@ -22,14 +23,10 @@ class App extends Component {
   render() {
     return (
       <div>
-        <header className="header">
-          <h1 className="header-title">
-            <a href="/">ais-ecommerce-demo-app</a>
-          </h1>
 
-        </header>
-
+      <Nav_bar></Nav_bar>
         <div className="container">
+          
           
           <InstantSearch searchClient={searchClient} indexName="products">
             <div className="search-panel">
@@ -44,7 +41,7 @@ class App extends Component {
                 return (
                   <div>
 
-                    <img src={'http://ikea-dataset.s3-eu-east-2.amazonaws.com/'+ props.hit.dims_image} align="left" alt={props.hit.name} />
+                    <img src={'https://ikea-dataset.s3-eu-east-2.amazonaws.com/'+ props.hit.dims_image} align="left" alt={props.hit.name} />
                     <div className="hit-name">
                       <Highlight attribute="name" hit={props.hit} />
                     </div>
@@ -61,6 +58,7 @@ class App extends Component {
               </div>
             </div>
           </InstantSearch>
+          <UploadForm></UploadForm>
         </div>
       </div>
     );
